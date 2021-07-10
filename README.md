@@ -2,7 +2,7 @@
 
 A website for analyzing github profiles made using ReactJS. <br>
 Hello there, if you want to clone my project here are the steps to clone it on your local machine.<br>
-You can view the website live at .
+You can view the website live at https://github-analyz3r.netlify.app/.
 
 ## Clone the project
 
