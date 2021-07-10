@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { GithubContext } from "../context/context";
-import { Pie2D, Column2D, Bar2D, Doughnut2D } from "./Charts";
+import { Pie, Column, Bar, Doughnut } from "./Charts";
 const Repos = () => {
 	const { repos } = React.useContext(GithubContext);
 	const languages = repos.reduce((total, item) => {
@@ -51,16 +51,18 @@ const Repos = () => {
 	stars = Object.values(stars).slice(-5).reverse();
 	forks = Object.values(forks).slice(-5).reverse();
 
-	return (
-		<section className="section">
-			<Wrapper className="section-center">
-				<Pie2D data={mostUsed} />
-				<Column2D data={stars} />
-				<Doughnut2D data={mostPopular} />
-				<Bar2D data={forks} />
-			</Wrapper>
-		</section>
-	);
+	if (repos.length) {
+		return (
+			<section className="section">
+				<Wrapper className="section-center">
+					<Pie data={mostUsed} />
+					<Column data={stars} />
+					<Doughnut data={mostPopular} />
+					<Bar data={forks} />
+				</Wrapper>
+			</section>
+		);
+	} else return <div></div>;
 };
 
 const Wrapper = styled.div`

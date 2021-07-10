@@ -46,6 +46,7 @@ const Search = () => {
 
 const Wrapper = styled.div`
 	position: relative;
+	margin-top: 4rem;
 	display: grid;
 	gap: 1rem 1.75rem;
 	@media (min-width: 768px) {

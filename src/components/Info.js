@@ -38,16 +38,18 @@ const UserInfo = () => {
 			color: "yellow",
 		},
 	];
-
-	return (
-		<section className="section">
-			<Wrapper className="section-center">
-				{items.map((item) => {
-					return <Item key={item.id} {...item} />;
-				})}
-			</Wrapper>
-		</section>
-	);
+	// console.log(followers.length);
+	if (followers) {
+		return (
+			<section className="section">
+				<Wrapper className="section-center">
+					{items.map((item) => {
+						return <Item key={item.id} {...item} />;
+					})}
+				</Wrapper>
+			</section>
+		);
+	} else return <div></div>;
 };
 
 const Item = ({ icon, label, value, color }) => {

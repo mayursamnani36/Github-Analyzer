@@ -15,37 +15,41 @@ const Card = () => {
 		location,
 		twitter_username,
 	} = githubUser;
-	return (
-		<Wrapper>
-			<header>
-				<img src={avatar_url} alt={login} />
-				<div>
-					<h4>{name ? name : login}</h4>
-					<p>{twitter_username ? `@ ${twitter_username}` : ""}</p>
+	if (githubUser.login) {
+		return (
+			<Wrapper>
+				<header>
+					<img src={avatar_url} alt={login} />
+					<div>
+						<h4>{name ? name : login}</h4>
+						<p>{twitter_username ? `@ ${twitter_username}` : ""}</p>
+					</div>
+					<a href={html_url}>follow</a>
+				</header>
+				<p className="bio">{bio}</p>
+				<div className="links">
+					<p>
+						{company ? <MdBusiness /> : ""}
+						{company ? company : ""}
+					</p>
+					<p>
+						<MdLocationOn />
+						{location || "Earth"}
+					</p>
+					{blog ? (
+						<a href={`https://${blog}`}>
+							<MdLink />
+							{blog}
+						</a>
+					) : (
+						""
+					)}
 				</div>
-				<a href={html_url}>follow</a>
-			</header>
-			<p className="bio">{bio}</p>
-			<div className="links">
-				<p>
-					{company ? <MdBusiness /> : ""}
-					{company ? company : ""}
-				</p>
-				<p>
-					<MdLocationOn />
-					{location || "Earth"}
-				</p>
-				{blog ? (
-					<a href={`https://${blog}`}>
-						<MdLink />
-						{blog}
-					</a>
-				) : (
-					""
-				)}
-			</div>
-		</Wrapper>
-	);
+			</Wrapper>
+		);
+	} else {
+		return <div></div>;
+	}
 };
 const Wrapper = styled.article`
 	background: var(--clr-white);

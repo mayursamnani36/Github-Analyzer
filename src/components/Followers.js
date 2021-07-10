@@ -4,24 +4,26 @@ import styled from "styled-components";
 
 const Followers = () => {
 	const { followers } = React.useContext(GithubContext);
-	return (
-		<Wrapper>
-			<div className="followers">
-				{followers.map((follower, index) => {
-					const { avatar_url, html_url, login } = follower;
-					return (
-						<article key={index}>
-							<img src={avatar_url} alt={login} />
-							<div>
-								<h4>{login}</h4>
-								<a href={html_url}>{html_url}</a>
-							</div>
-						</article>
-					);
-				})}
-			</div>
-		</Wrapper>
-	);
+	if (followers.length) {
+		return (
+			<Wrapper>
+				<div className="followers">
+					{followers.map((follower, index) => {
+						const { avatar_url, html_url, login } = follower;
+						return (
+							<article key={index}>
+								<img src={avatar_url} alt={login} />
+								<div>
+									<h4>{login}</h4>
+									<a href={html_url}>{html_url}</a>
+								</div>
+							</article>
+						);
+					})}
+				</div>
+			</Wrapper>
+		);
+	} else return <div></div>;
 };
 
 const Wrapper = styled.article`
